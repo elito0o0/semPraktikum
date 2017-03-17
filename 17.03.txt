@@ -1,0 +1,88 @@
+install.packages("UsingR")
+install.packages("MASS")
+library(UsingR)
+data(movies)
+> names(movies)
+[1] "title"    "current"  "previous" "gross"   
+> movies
+                            title current previous gross
+1  Pearl Harbor (TO)                 29.6     75.2 118.9
+2  Shrek (DW)                        28.2     55.2 148.4
+3  The Animal (CO)                   19.6       NA  19.6
+4  Moulin Rouge (20)                 13.7      0.3  14.4
+5  What's the Worst that... (MGM)    13.0       NA  13.0
+6  The Mummy Returns (UN)             7.8     19.0 181.2
+7  A Knight's Tale (CO)               3.4      9.1  49.4
+8  Bridget Jones's Diary (MM)         2.0      4.2  65.4
+9  Angel Eyes (WB)                    1.9      6.2  21.7
+10 Momento (Newmarket Films)          1.0      1.9  15.8
+11 Along Came a Spider (PA)           0.7      2.1  71.8
+12 Spy Kids (DI)                      0.4      1.3 105.9
+13 Blow (NL)                          0.4      1.3  52.2
+14 Driven (WB)                        0.3      1.2  31.8
+15 O'Brother, Where Art... (TS)       0.3      0.3  44.2
+16 Crocodile Dundee in L.A. (PA)      0.3      1.0  24.3
+17 The Tailor of Panama (CO)          0.3      0.7  12.9
+18 Crouching Tiger...Dragon (SC)      0.3      0.5 127.2
+19 Save the Last Dance (PA)           0.2      0.5  90.2
+20 The Golden Bowl (LG)               0.2      0.5   1.5
+21 With a Friend Like Harry (MM)      0.2      0.4   1.8
+22 Traffic (USA)                      0.1      0.4 123.8
+23 Castaway (20)                      0.1      0.2 233.2
+24 Startup.com (AR)                   0.1      0.2   0.5
+25 Amores Perros (Lions Gate)         0.1      0.3   4.8
+26 Kingdom Come (FS)                  0.1      0.4  22.7
+> attach(movies)
+> boxplot(current)
+> boxplot(gross, horizontal=TRUE)
+> ls()
+[1] "movies" "t"     
+> attach(movies)
+The following objects are masked from movies (pos = 3):
+
+    current, gross, previous, title
+
+> ls()
+[1] "movies" "t"     
+> ls(movies)
+[1] "current"  "gross"    "previous" "title"   
+> simple.hist.and.boxplot(current)
+> tmp=hist(current)
+> lines(c(min(tmp$breaks),tmp$mids,max(tmp$breaks)),c(0,tmp$counts,0),type="l")
+data("faithful")
+> attach(faithful)
+hist(eruptions,15,prob=T)
+> lines(density(eruptions))
+ lines(density(eruptions,bw="SJ"), col='red')
+> x=rnorm(100)
+> y=rnorm(100)
+> hist(x)
+> lines(density(x))
+> hist(y)
+> lines(density(y))
+> hist(x)
+> lines(density(x))
+> lines(density(y),col='red')
+> lines(density(x,bw="SJ"),col="blue")
+> lines(density(y,bw="SJ"),col="red")
+smokes = c("Y","N","N","Y","N","Y","Y","Y","N","Y")
+> 
+> amount = c(1,2,2,3,3,1,2,1,3,2)
+> table(smokers,amount)
+table(smokes,amount)
+      amount
+smokes 1 2 3
+     N 0 2 2
+     Y 3 2 1
+> tmp=table(smokes,amount)
+> options(digits=3)
+> prop.table(tmp,1)
+      amount
+smokes     1     2     3
+     N 0.000 0.500 0.500
+     Y 0.500 0.333 0.167
+> 
+barchart(table(smokes,amount),main="Studing survey",col=c("red","blue"),beside=TRUE,horizontal=FALSE)
+barchart(table(smokes,amount),main="Studing survey",col=c("red","blue"),beside=TRUE,horizontal=FALSE,legend.text=c("less than 5","5-10","more than 10"))
+> par(2,2)
+
