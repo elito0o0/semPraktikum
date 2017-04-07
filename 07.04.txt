@@ -1,0 +1,43 @@
+# Task 1
+# read data
+data=read.csv("C:/Users/grade/Downloads/pokemon.csv", header=TRUE)
+# Tast 2
+## Random data
+set.seed(71623)
+# dim(data)
+rows=sample(1:705,600,replace=FALSE)
+new=data[rows, ]
+attach(new)
+# Task 3 
+# print 5-6 rows
+# new[1:5,]
+head(new)
+# Task 4
+## Number -numeric/discretnta
+## Name - category
+## Type1 - category
+## Type2 - category
+## Attack - numeric/discretna
+## Defense - numeric/discretna
+## Height - numeric/neprekasnata
+## Weight - numeric/neprekasnata
+# Task 5
+summary(new)
+table(new$Name)
+table(new$Type1)
+barplot(table(new$Type1))
+summary(new)
+boxplot(Attack)
+##vav 5 zada4a sme otgovorili ot summary-to
+new[Height==14.5, ]
+new[Weight==0.1, ]
+# Task 7
+new[Attack+Defense>220]
+# Task 8
+new[Type1=="Dragon"| Type2=="Dragon" | Type1=="Flying" | Type2=="Flying" & Height>1, ]
+# Task9
+ab=new[Type2!="",Weight]
+hist(ab,prob=TRUE)
+lines(density(ab)
+q=new[Type1="Normal" | Type1="Fighting",c(3,7)]
+boxplot(q$Height~q$Type1)
